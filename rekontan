@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# array=(Edsus Mingguan Harian)
+# len=${#array[*]}
+# i=0
+# filesrenamed=0
+# while [ $i -lt $len ]; do
+# 	find . -type f -name "Kontan ${array[$i]} Edisi*" | while read FILE ; do
+# 		if
+# 		newfile="$(echo ${FILE} |sed 's/\(Kontan\ ${array[$i]}\ Edisi\ \)\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]][[:digit:]][[:digit:]]\)\.pdf/${array[$i]}\ \4-\3-\2\.pdf/')" ;
+# 	    # mv "${FILE}" "${newfile}" ;
+# 		echo "${FILE} -> ${newfile}"
+# 		let filesrenamed++
+# 	done
+# 	let i++
+# done
+# echo "--"
+# echo "Renamed: ${filesrenamed} files. Finished."
+
+
+# Kontan Edsus
+find . -type f -name 'Kontan Edsus Edisi*' | while read FILE ; do
+	# sed 's/^(<span.*">\([0-9]*\).*">\([0-9]*\).*/(\1.\2)/'
+    newfile="$(echo ${FILE} |sed 's/\(Kontan\ Edsus\ Edisi\ \)\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]][[:digit:]][[:digit:]]\)\.pdf/Edsus\ \4-\3-\2\.pdf/')" ;
+    mv "${FILE}" "${newfile}" ;
+	echo "${FILE} -> ${newfile}"
+done
+
+# Kontan Mingguan
+find . -type f -name 'Kontan Mingguan Edisi*' | while read FILE ; do
+	# sed 's/^(<span.*">\([0-9]*\).*">\([0-9]*\).*/(\1.\2)/'
+    newfile="$(echo ${FILE} |sed 's/\(Kontan\ Mingguan\ Edisi\ \)\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]][[:digit:]][[:digit:]]\)\.pdf/Mingguan\ \4-\3-\2\.pdf/')" ;
+    mv "${FILE}" "${newfile}" ;
+	echo "${FILE} -> ${newfile}"
+done
+
+# Kontan Harian
+find . -type f -name 'Kontan Harian Edisi*' | while read FILE ; do
+	# sed 's/^(<span.*">\([0-9]*\).*">\([0-9]*\).*/(\1.\2)/'
+    newfile="$(echo ${FILE} |sed 's/\(Kontan\ Harian\ Edisi\ \)\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]]\)-\([[:digit:]][[:digit:]][[:digit:]][[:digit:]]\)\.pdf/Harian\ \4-\3-\2\.pdf/')" ;
+    mv "${FILE}" "${newfile}" ;
+	echo "${FILE} -> ${newfile}"
+done
